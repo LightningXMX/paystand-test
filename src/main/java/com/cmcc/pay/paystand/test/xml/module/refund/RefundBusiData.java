@@ -1,4 +1,7 @@
-package com.cmcc.pay.paystand.test.xml.module;
+package com.cmcc.pay.paystand.test.xml.module.refund;
+
+import com.cmcc.pay.paystand.test.xml.module.AdvPayEnum;
+import com.cmcc.pay.paystand.test.xml.module.BusiData;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -7,8 +10,9 @@ import java.util.Map;
 /**
  * Created by LIGHTNING on 2016/7/24.
  */
+//@XmlRootElement(name = "BusiData")
 @XmlRootElement(name = "BusiData")
-public class RefundBusiData extends BusiData {
+public class RefundBusiData{
 
 
     private String orderId;
@@ -27,6 +31,7 @@ public class RefundBusiData extends BusiData {
     public String getRefundNotifyURL() {
         return refundNotifyURL;
     }
+
     @XmlElement(name = "refundNotifyURL")
     public void setRefundNotifyURL(String refundNotifyURL) {
         this.refundNotifyURL = refundNotifyURL;
@@ -35,6 +40,7 @@ public class RefundBusiData extends BusiData {
     public String getRefundReason() {
         return refundReason;
     }
+
     @XmlElement(name = "refundReason")
     public void setRefundReason(String refundReason) {
         this.refundReason = refundReason;
@@ -42,7 +48,7 @@ public class RefundBusiData extends BusiData {
 
 
 
-    public static BusiData build(Map<String,String> input){
+    public static RefundBusiData build(Map<String,String> input){
         RefundBusiData busiData = new RefundBusiData();
         busiData.setOrderId(input.get(AdvPayEnum.OrderId));
         busiData.setRefundNotifyURL(input.get(AdvPayEnum.RefundNotifyURL));

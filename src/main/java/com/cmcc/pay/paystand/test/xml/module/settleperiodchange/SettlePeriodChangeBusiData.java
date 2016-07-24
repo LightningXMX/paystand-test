@@ -1,4 +1,7 @@
-package com.cmcc.pay.paystand.test.xml.module;
+package com.cmcc.pay.paystand.test.xml.module.settleperiodchange;
+
+import com.cmcc.pay.paystand.test.xml.module.AdvPayEnum;
+import com.cmcc.pay.paystand.test.xml.module.BusiData;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -8,7 +11,7 @@ import java.util.Map;
  * Created by LIGHTNING on 2016/7/24.
  */
 @XmlRootElement(name = "BusiData")
-public class SettlePeriodChangeBusiData extends BusiData {
+public class SettlePeriodChangeBusiData {
 
     private String orderId;
     private String settlePeriod;
@@ -32,7 +35,7 @@ public class SettlePeriodChangeBusiData extends BusiData {
     }
 
 
-    public static BusiData build(Map<String,String> input){
+    public static SettlePeriodChangeBusiData build(Map<String,String> input){
 
         SettlePeriodChangeBusiData busiData = new SettlePeriodChangeBusiData();
         busiData.setOrderId(input.get(AdvPayEnum.OrderId));

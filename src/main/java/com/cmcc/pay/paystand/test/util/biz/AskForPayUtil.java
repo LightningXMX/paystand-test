@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * Created by LIGHTNING on 2016/7/24.
  */
-public class AskForUtil {
+public class AskForPayUtil {
 
     public static Map<String,String> createDefaultInput(){
         Map<String,String> defaultInput = new HashMap();

@@ -4,9 +4,8 @@ import com.cmcc.pay.paystand.test.util.AdvTestResponse;
 import com.cmcc.pay.paystand.test.util.InterfaceType;
 import com.cmcc.pay.paystand.test.util.TestBase;
 import com.cmcc.pay.paystand.test.util.DBHelper;
-import com.cmcc.pay.paystand.test.util.biz.AskForUtil;
+import com.cmcc.pay.paystand.test.util.biz.AskForPayUtil;
 import com.cmcc.pay.paystand.test.xml.module.AdvPayEnum;
-import org.junit.After;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.DataProvider;
@@ -29,14 +28,14 @@ public class AskForPayTest extends TestBase {
     public Object[][] testData_AskForPay() {
 
         // all parameters are default
-        Map testData = AskForUtil.createDefaultInput();
+        Map testData = AskForPayUtil.createDefaultInput();
         List expectedResults = createExpectedResult();
         expectedResults.add("收银台");
 /**
  * Test Node:Version (Test Exception & boundary value)
  */
         //testcase1
-        Map testData_Version01 = AskForUtil.createDefaultInput();
+        Map testData_Version01 = AskForPayUtil.createDefaultInput();
         testData_Version01.put(AdvPayEnum.Version, "");
 
         List expectedResults_Version01 = createExpectedResult();
@@ -44,7 +43,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_Version01.add("Version节点值为空");
 
         //testcase2
-        Map testData_Version02 = AskForUtil.createDefaultInput();
+        Map testData_Version02 = AskForPayUtil.createDefaultInput();
         testData_Version02.put(AdvPayEnum.Version, "1.0");
 
         List expectedResults_Version02 = createExpectedResult();
@@ -52,7 +51,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_Version02.add("Version节点值错误，必须为1.00");
 
         //testcase3
-        Map testData_Version03 = AskForUtil.createDefaultInput();
+        Map testData_Version03 = AskForPayUtil.createDefaultInput();
         testData_Version03.put(AdvPayEnum.Version, "1.000");
 
         List expectedResults_Version03 = createExpectedResult();
@@ -60,7 +59,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_Version03.add("Version节点值错误，必须为1.00");
 
         //testcase4
-        Map testData_Version04 = AskForUtil.createDefaultInput();
+        Map testData_Version04 = AskForPayUtil.createDefaultInput();
         testData_Version04.put(AdvPayEnum.Version, "2.00");
 
         List expectedResults_Version04 = createExpectedResult();
@@ -70,7 +69,7 @@ public class AskForPayTest extends TestBase {
  * Test Node: TransactionId (Test Exception & boundary value)
  */
         //testcase1
-        Map testData_TransactionId01 = AskForUtil.createDefaultInput();
+        Map testData_TransactionId01 = AskForPayUtil.createDefaultInput();
         testData_TransactionId01.put(AdvPayEnum.TransactionId, "");
 
         List expectedResults_TransactionId01 = createExpectedResult();
@@ -78,7 +77,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_TransactionId01.add("TransactionId节点值为空");
 
         //testcase2
-        Map testData_TransactionId02 = AskForUtil.createDefaultInput();
+        Map testData_TransactionId02 = AskForPayUtil.createDefaultInput();
         testData_TransactionId02.put(AdvPayEnum.TransactionId, "up123456789012345678901234567890");
 
         List expectedResults_TransactionId02 = createExpectedResult();
@@ -86,7 +85,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_TransactionId02.add("确认支付");
 
         //testcase3
-        Map testData_TransactionId03 = AskForUtil.createDefaultInput();
+        Map testData_TransactionId03 = AskForPayUtil.createDefaultInput();
         testData_TransactionId03.put(AdvPayEnum.TransactionId, "up1234567890123456789012345678901");
 
         List expectedResults_TransactionId03 = createExpectedResult();
@@ -94,7 +93,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_TransactionId03.add("TransactionId节点值长度不能超过32字符");
 
         //testcase4
-        Map testData_TransactionId04 = AskForUtil.createDefaultInput();
+        Map testData_TransactionId04 = AskForPayUtil.createDefaultInput();
         testData_TransactionId04.put(AdvPayEnum.TransactionId, "123&678%0123￥01#67890_*");
 
         List expectedResults_TransactionId04 = createExpectedResult();
@@ -102,7 +101,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_TransactionId04.add("确认支付");
 
         //testcase5
-        Map testData_TransactionId05 = AskForUtil.createDefaultInput();
+        Map testData_TransactionId05 = AskForPayUtil.createDefaultInput();
         testData_TransactionId05.put(AdvPayEnum.TransactionId, "aaaaaaaaaaaaaaaa");
 
         List expectedResults_TransactionId05 = createExpectedResult();
@@ -114,7 +113,7 @@ public class AskForPayTest extends TestBase {
  * Test Node: TransactionDate (Test Exception & boundary value)
  */
         //testcase1
-        Map testData_TransactionDate01 = AskForUtil.createDefaultInput();
+        Map testData_TransactionDate01 = AskForPayUtil.createDefaultInput();
         testData_TransactionDate01.put(AdvPayEnum.TransactionDate, "");
 
         List expectedResults_TransactionDate01 = createExpectedResult();
@@ -122,7 +121,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_TransactionDate01.add("TransactionDate节点值为空");
 
         //testcase2
-        Map testData_TransactionDate02 = AskForUtil.createDefaultInput();
+        Map testData_TransactionDate02 = AskForPayUtil.createDefaultInput();
         testData_TransactionDate02.put(AdvPayEnum.TransactionDate, "20160317103522");
 
         List expectedResults_TransactionDate02 = createExpectedResult();
@@ -130,7 +129,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_TransactionDate02.add("确认支付");
 
         //testcase3
-        Map testData_TransactionDate03 = AskForUtil.createDefaultInput();
+        Map testData_TransactionDate03 = AskForPayUtil.createDefaultInput();
         testData_TransactionDate03.put(AdvPayEnum.TransactionDate, "2016031710352a");
 
         List expectedResults_TransactionDate03 = createExpectedResult();
@@ -138,7 +137,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_TransactionDate03.add("TransactionDate节点值必须为YYYYMMddHHMMss时间格式");
 
         //testcase4
-        Map testData_TransactionDate04 = AskForUtil.createDefaultInput();
+        Map testData_TransactionDate04 = AskForPayUtil.createDefaultInput();
         testData_TransactionDate04.put(AdvPayEnum.TransactionDate, "2016031710352");
 
         List expectedResults_TransactionDate04 = createExpectedResult();
@@ -146,7 +145,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_TransactionDate04.add("TransactionDate节点值必须为YYYYMMddHHMMss时间格式");
 
         //testcase5
-        Map testData_TransactionDate05 = AskForUtil.createDefaultInput();
+        Map testData_TransactionDate05 = AskForPayUtil.createDefaultInput();
         testData_TransactionDate05.put(AdvPayEnum.TransactionDate, "201603171035222");
 
         List expectedResults_TransactionDate05 = createExpectedResult();
@@ -154,7 +153,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_TransactionDate05.add("TransactionDate节点值长度不能超过14字符");
 
         //testcase6
-        Map testData_TransactionDate06 = AskForUtil.createDefaultInput();
+        Map testData_TransactionDate06 = AskForPayUtil.createDefaultInput();
         testData_TransactionDate06.put(AdvPayEnum.TransactionDate, "00000000000000");
 
         List expectedResults_TransactionDate06 = createExpectedResult();
@@ -165,7 +164,7 @@ public class AskForPayTest extends TestBase {
  */
 
         //testcase1
-        Map testData_OriginId01 = AskForUtil.createDefaultInput();
+        Map testData_OriginId01 = AskForPayUtil.createDefaultInput();
         testData_OriginId01.put(AdvPayEnum.OriginId, "");
 
         List expectedResults_OriginId01 = createExpectedResult();
@@ -173,7 +172,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_OriginId01.add("OriginId节点值为空");
 
         //testcase2
-        Map testData_OriginId02 = AskForUtil.createDefaultInput();
+        Map testData_OriginId02 = AskForPayUtil.createDefaultInput();
         testData_OriginId02.put(AdvPayEnum.OriginId, "1000");
 
         List expectedResults_OriginId02 = createExpectedResult();
@@ -181,7 +180,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_OriginId02.add("确认支付");
 
         //testcase3
-        Map testData_OriginId03 = AskForUtil.createDefaultInput();
+        Map testData_OriginId03 = AskForPayUtil.createDefaultInput();
         testData_OriginId03.put(AdvPayEnum.OriginId, "14");
 
         List expectedResults_OriginId03 = createExpectedResult();
@@ -189,7 +188,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_OriginId03.add("OriginId不存在");
 
         //testcase4
-        Map testData_OriginId04 = AskForUtil.createDefaultInput();
+        Map testData_OriginId04 = AskForPayUtil.createDefaultInput();
         testData_OriginId04.put(AdvPayEnum.OriginId, "12345");
 
         List expectedResults_OriginId04 = createExpectedResult();
@@ -201,7 +200,7 @@ public class AskForPayTest extends TestBase {
  */
 
         //testcase1
-        Map testData_DigestAlg01 = AskForUtil.createDefaultInput();
+        Map testData_DigestAlg01 = AskForPayUtil.createDefaultInput();
         testData_DigestAlg01.put(AdvPayEnum.DigestAlg, "");
 
         List expectedResults_DigestAlg01 = createExpectedResult();
@@ -209,7 +208,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_DigestAlg01.add("Digestalg节点值为空");
 
         //testcase2
-        Map testData_DigestAlg02 = AskForUtil.createDefaultInput();
+        Map testData_DigestAlg02 = AskForPayUtil.createDefaultInput();
         testData_DigestAlg02.put(AdvPayEnum.DigestAlg, "MD5");
 
         List expectedResults_DigestAlg02 = createExpectedResult();
@@ -217,7 +216,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_DigestAlg02.add("确认支付");
 
         //testcase3
-        Map testData_DigestAlg03 = AskForUtil.createDefaultInput();
+        Map testData_DigestAlg03 = AskForPayUtil.createDefaultInput();
         testData_DigestAlg03.put(AdvPayEnum.DigestAlg, "RSA");
 
         List expectedResults_DigestAlg03 = createExpectedResult();
@@ -225,7 +224,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_DigestAlg03.add("确认支付");
 
         //testcase4
-        Map testData_DigestAlg04 = AskForUtil.createDefaultInput();
+        Map testData_DigestAlg04 = AskForPayUtil.createDefaultInput();
         testData_DigestAlg04.put(AdvPayEnum.DigestAlg, "123");
 
         List expectedResults_DigestAlg04 = createExpectedResult();
@@ -238,7 +237,7 @@ public class AskForPayTest extends TestBase {
  */
 
         //testcase1
-        Map testData_AccountType01 = AskForUtil.createDefaultInput();
+        Map testData_AccountType01 = AskForPayUtil.createDefaultInput();
         testData_AccountType01.put(AdvPayEnum.AccountType, "");
 
         List expectedResults_AccountType01 = createExpectedResult();
@@ -246,7 +245,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_AccountType01.add("AccountType节点值为空");
 
         //testcase2
-        Map testData_AccountType02 = AskForUtil.createDefaultInput();
+        Map testData_AccountType02 = AskForPayUtil.createDefaultInput();
         testData_AccountType02.put(AdvPayEnum.AccountCode, "");
 
         List expectedResults_AccountType02 = createExpectedResult();
@@ -255,7 +254,7 @@ public class AskForPayTest extends TestBase {
 
 
         //testcase3
-        Map testData_AccountType03 = AskForUtil.createDefaultInput();
+        Map testData_AccountType03 = AskForPayUtil.createDefaultInput();
         testData_AccountType03.put(AdvPayEnum.AccountType, "1");
         testData_AccountType03.put(AdvPayEnum.AccountCode, "123456789123");
 
@@ -264,7 +263,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_AccountType03.add("ACCOUNTTYPE为1，AccountCode必须为正确的11位手机号码");
 
         //testcase4
-        Map testData_AccountType04 = AskForUtil.createDefaultInput();
+        Map testData_AccountType04 = AskForPayUtil.createDefaultInput();
         testData_AccountType04.put(AdvPayEnum.AccountType, "1");
         testData_AccountType04.put(AdvPayEnum.AccountCode, "18867103681");
 
@@ -274,7 +273,7 @@ public class AskForPayTest extends TestBase {
 
 
         //testcase5  AccountType=2时候 AccountCode为128位
-        Map testData_AccountType05 = AskForUtil.createDefaultInput();
+        Map testData_AccountType05 = AskForPayUtil.createDefaultInput();
         testData_AccountType05.put(AdvPayEnum.AccountType, "2");
         testData_AccountType05.put(AdvPayEnum.AccountCode, "12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678");
 
@@ -283,7 +282,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_AccountType05.add("确认支付");
 
         //testcase6  AccountType=2时候 AccountCode为129位
-        Map testData_AccountType06 = AskForUtil.createDefaultInput();
+        Map testData_AccountType06 = AskForPayUtil.createDefaultInput();
         testData_AccountType06.put(AdvPayEnum.AccountType, "2");
         testData_AccountType06.put(AdvPayEnum.AccountCode, "123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789");
 
@@ -292,7 +291,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_AccountType06.add("AccountCode节点值长度不能超过128字符");
 
         //testcase7  AccountType=3时候 AccountCode为11位手机号
-        Map testData_AccountType07 = AskForUtil.createDefaultInput();
+        Map testData_AccountType07 = AskForPayUtil.createDefaultInput();
         testData_AccountType07.put(AdvPayEnum.AccountType, "3");
         testData_AccountType07.put(AdvPayEnum.AccountCode, "18867103681");
 
@@ -302,7 +301,7 @@ public class AskForPayTest extends TestBase {
 
 
         //testcase8  AccountType=3时候 AccountCode为正确的邮箱
-        Map testData_AccountType08 = AskForUtil.createDefaultInput();
+        Map testData_AccountType08 = AskForPayUtil.createDefaultInput();
         testData_AccountType08.put(AdvPayEnum.AccountType, "3");
         testData_AccountType08.put(AdvPayEnum.AccountCode, "echo_y@126.com");
 
@@ -312,7 +311,7 @@ public class AskForPayTest extends TestBase {
 
 
         //testcase9  AccountType=3时候 AccountCode为不带@符号的字符串不超过128位
-        Map testData_AccountType09 = AskForUtil.createDefaultInput();
+        Map testData_AccountType09 = AskForPayUtil.createDefaultInput();
         testData_AccountType09.put(AdvPayEnum.AccountType, "3");
         testData_AccountType09.put(AdvPayEnum.AccountCode, "echo_y12126com");
 
@@ -321,7 +320,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_AccountType09.add("AccountCode必须为正确的email地址");
 
         //testcase10  AccountType=3时候 AccountCode为带@符号的字符串且超过128位
-        Map testData_AccountType10 = AskForUtil.createDefaultInput();
+        Map testData_AccountType10 = AskForPayUtil.createDefaultInput();
         testData_AccountType10.put(AdvPayEnum.AccountType, "3");
         testData_AccountType10.put(AdvPayEnum.AccountCode, "12345@789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789");
 
@@ -330,7 +329,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_AccountType10.add("AccountCode节点值长度不能超过128字符");
 
         //testcase11  AccountType=4
-        Map testData_AccountType11 = AskForUtil.createDefaultInput();
+        Map testData_AccountType11 = AskForPayUtil.createDefaultInput();
         testData_AccountType11.put(AdvPayEnum.AccountType, "4");
 
         List expectedResults_AccountType11 = createExpectedResult();
@@ -339,7 +338,7 @@ public class AskForPayTest extends TestBase {
 
 
         //testcase12  AccountType为字符类型
-        Map testData_AccountType12 = AskForUtil.createDefaultInput();
+        Map testData_AccountType12 = AskForPayUtil.createDefaultInput();
         testData_AccountType12.put(AdvPayEnum.AccountType, "a");
 
         List expectedResults_AccountType12 = createExpectedResult();
@@ -347,7 +346,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_AccountType12.add("AccountType节点值必须为1-3的数值");
 
         //testcase13  AccountType为特殊字符
-        Map testData_AccountType13 = AskForUtil.createDefaultInput();
+        Map testData_AccountType13 = AskForPayUtil.createDefaultInput();
         testData_AccountType13.put(AdvPayEnum.AccountType, "&");
 
         List expectedResults_AccountType13 = createExpectedResult();
@@ -355,7 +354,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_AccountType13.add("AccountType节点值必须为1-3的数值");
 
         //testcase14  AccountType为2位数字
-        Map testData_AccountType14 = AskForUtil.createDefaultInput();
+        Map testData_AccountType14 = AskForPayUtil.createDefaultInput();
         testData_AccountType14.put(AdvPayEnum.AccountType, "12");
 
         List expectedResults_AccountType14 = createExpectedResult();
@@ -368,7 +367,7 @@ public class AskForPayTest extends TestBase {
 
 
         //testcase1
-        Map testData_PayInfo01 = AskForUtil.createDefaultInput();
+        Map testData_PayInfo01 = AskForPayUtil.createDefaultInput();
         testData_PayInfo01.put(AdvPayEnum.PayInfo, "");
 
         List expectedResults_PayInfo01 = createExpectedResult();
@@ -376,7 +375,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_PayInfo01.add("确认支付");
 
         //testcase2 PayInfo为128位数字
-        Map testData_PayInfo02 = AskForUtil.createDefaultInput();
+        Map testData_PayInfo02 = AskForPayUtil.createDefaultInput();
         testData_PayInfo02.put(AdvPayEnum.PayInfo, "12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678");
 
         List expectedResults_PayInfo02 = createExpectedResult();
@@ -385,7 +384,7 @@ public class AskForPayTest extends TestBase {
 
 
         //testcase3 PayInfo为128位数字加字符
-        Map testData_PayInfo03 = AskForUtil.createDefaultInput();
+        Map testData_PayInfo03 = AskForPayUtil.createDefaultInput();
         testData_PayInfo03.put(AdvPayEnum.PayInfo, "123456789012aaa67890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678");
 
         List expectedResults_PayInfo03 = createExpectedResult();
@@ -393,7 +392,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_PayInfo03.add("确认支付");
 
         //testcase4 PayInfo为129位数字
-        Map testData_PayInfo04 = AskForUtil.createDefaultInput();
+        Map testData_PayInfo04 = AskForPayUtil.createDefaultInput();
         testData_PayInfo04.put(AdvPayEnum.PayInfo, "123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789");
 
         List expectedResults_PayInfo04 = createExpectedResult();
@@ -401,7 +400,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_PayInfo04.add("PayInfo长度不能超过128字符");
 
         //testcase5 PayInfo为含中文字符
-        Map testData_PayInfo05 = AskForUtil.createDefaultInput();
+        Map testData_PayInfo05 = AskForPayUtil.createDefaultInput();
         testData_PayInfo05.put(AdvPayEnum.PayInfo, "中文字符检测");
 
         List expectedResults_PayInfo05 = createExpectedResult();
@@ -409,7 +408,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_PayInfo05.add("确认支付");
 
         //testcase6 PayInfo为128个中文字符
-        Map testData_PayInfo06 = AskForUtil.createDefaultInput();
+        Map testData_PayInfo06 = AskForPayUtil.createDefaultInput();
         testData_PayInfo06.put(AdvPayEnum.PayInfo, "中文字符检测中心甘肃中文字符检测中心甘肃中文字符检测中心甘肃中文字符检测中心甘肃中文字符检测中心甘肃中文字符检测中心甘肃中文字符检测中心甘肃中文字符检测中心甘肃中文字符检测中心甘肃中文字符检测中心甘肃中文字符检测中心甘肃中文字符检测中心甘肃中文字符检测中心");
 
         List expectedResults_PayInfo06 = createExpectedResult();
@@ -417,7 +416,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_PayInfo06.add("确认支付");
 
         //testcase7 PayInfo为超过128个中文字符
-        Map testData_PayInfo07 = AskForUtil.createDefaultInput();
+        Map testData_PayInfo07 = AskForPayUtil.createDefaultInput();
         testData_PayInfo07.put(AdvPayEnum.PayInfo, "中文字符检测中心甘肃中文字符检测中心甘肃中文字符检测中心甘肃中文字符检测中心甘肃中文字符检测中心甘肃中文字符检测中心甘肃中文字符检测中心甘肃中文字符检测中心甘肃中文字符检测中心甘肃中文字符检测中心甘肃中文字符检测中心甘肃中文字符检测中心甘肃中文字符检测中心甘肃");
 
         List expectedResults_PayInfo07 = createExpectedResult();
@@ -425,7 +424,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_PayInfo07.add("PayInfo长度不能超过128字符");
 
         //testcase8 PayInfo为含有特殊字符
-        Map testData_PayInfo08 = AskForUtil.createDefaultInput();
+        Map testData_PayInfo08 = AskForPayUtil.createDefaultInput();
         testData_PayInfo08.put(AdvPayEnum.PayInfo, "&&&&！！！！@@@@@");
 
         List expectedResults_PayInfo08 = createExpectedResult();
@@ -438,7 +437,7 @@ public class AskForPayTest extends TestBase {
 */
 
         //testcase1
-        Map testData_OrderId01 = AskForUtil.createDefaultInput();
+        Map testData_OrderId01 = AskForPayUtil.createDefaultInput();
         testData_OrderId01.put(AdvPayEnum.OrderId, "");
 
         List expectedResults_OrderId01 = createExpectedResult();
@@ -446,7 +445,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_OrderId01.add("OrderId节点值为空");
 
         //testcase2 OrderId为20位数字
-        Map testData_OrderId02 = AskForUtil.createDefaultInput();
+        Map testData_OrderId02 = AskForPayUtil.createDefaultInput();
         testData_OrderId02.put(AdvPayEnum.OrderId, "12345678901234567890");
 
         List expectedResults_OrderId02 = createExpectedResult();
@@ -455,7 +454,7 @@ public class AskForPayTest extends TestBase {
 
 
         //testcase3 OrderId为20位数字加字符
-        Map testData_OrderId03 = AskForUtil.createDefaultInput();
+        Map testData_OrderId03 = AskForPayUtil.createDefaultInput();
         testData_OrderId03.put(AdvPayEnum.OrderId, "op123456789012345678");
 
         List expectedResults_OrderId03 = createExpectedResult();
@@ -463,7 +462,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_OrderId03.add("确认支付");
 
         //testcase4 OrderId为超过20位数字加字符
-        Map testData_OrderId04 = AskForUtil.createDefaultInput();
+        Map testData_OrderId04 = AskForPayUtil.createDefaultInput();
         testData_OrderId04.put(AdvPayEnum.OrderId, "op123456789012345678wq");
 
         List expectedResults_OrderId04 = createExpectedResult();
@@ -471,7 +470,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_OrderId04.add("OrderId长度不能超过20字符");
 
         //testcase5 OrderId含有中文字符
-        Map testData_OrderId05 = AskForUtil.createDefaultInput();
+        Map testData_OrderId05 = AskForPayUtil.createDefaultInput();
         testData_OrderId05.put(AdvPayEnum.OrderId, "op业务平台订单号");
 
         List expectedResults_OrderId05 = createExpectedResult();
@@ -483,7 +482,7 @@ public class AskForPayTest extends TestBase {
  * Test Node:  MerchantId (Test Exception & boundary value)
  */
         //testcase1
-        Map testData_MerchantId01 = AskForUtil.createDefaultInput();
+        Map testData_MerchantId01 = AskForPayUtil.createDefaultInput();
         testData_MerchantId01.put(AdvPayEnum.MerchantId, "");
 
         List expectedResults_MerchantId01 = createExpectedResult();
@@ -491,7 +490,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_MerchantId01.add("MerchantId节点值为空");
 
         //testcase2 MerchantId为18位数字且在数据库中存在
-        Map testData_MerchantId02 = AskForUtil.createDefaultInput();
+        Map testData_MerchantId02 = AskForPayUtil.createDefaultInput();
         testData_MerchantId02.put(AdvPayEnum.MerchantId, "123456789012345678");
 
         List expectedResults_MerchantId02 = createExpectedResult();
@@ -500,7 +499,7 @@ public class AskForPayTest extends TestBase {
 
 
         //testcase3 MerchantId为19位数字
-        Map testData_MerchantId03 = AskForUtil.createDefaultInput();
+        Map testData_MerchantId03 = AskForPayUtil.createDefaultInput();
         testData_MerchantId03.put(AdvPayEnum.MerchantId, "1234567890123456789");
 
         List expectedResults_MerchantId03 = createExpectedResult();
@@ -508,7 +507,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_MerchantId03.add("MerchantId节点值不能超过18位数值");
 
         //testcase4 MerchantId包含字符
-        Map testData_MerchantId04 = AskForUtil.createDefaultInput();
+        Map testData_MerchantId04 = AskForPayUtil.createDefaultInput();
         testData_MerchantId04.put(AdvPayEnum.MerchantId, "123abc");
 
         List expectedResults_MerchantId04 = createExpectedResult();
@@ -516,7 +515,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_MerchantId04.add("MerchantId节点值必须为正整数");
 
         //testcase5 MerchantId含有中文字符
-        Map testData_MerchantId05 = AskForUtil.createDefaultInput();
+        Map testData_MerchantId05 = AskForPayUtil.createDefaultInput();
         testData_MerchantId05.put(AdvPayEnum.MerchantId, "op业务平台订单号");
 
         List expectedResults_MerchantId05 = createExpectedResult();
@@ -524,7 +523,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_MerchantId05.add("MerchantId节点值必须为正整数");
 
         //testcase6 MerchantId为18位以下的数字且数据库中存在
-        Map testData_MerchantId06 = AskForUtil.createDefaultInput();
+        Map testData_MerchantId06 = AskForPayUtil.createDefaultInput();
         testData_MerchantId06.put(AdvPayEnum.MerchantId, "3");
 
         List expectedResults_MerchantId06 = createExpectedResult();
@@ -532,7 +531,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_MerchantId06.add("确认支付");
 
         //testcase7 MerchantId为18位以下的数字且数据库中不存在
-        Map testData_MerchantId07 = AskForUtil.createDefaultInput();
+        Map testData_MerchantId07 = AskForPayUtil.createDefaultInput();
         testData_MerchantId07.put(AdvPayEnum.MerchantId, "6432");
 
         List expectedResults_MerchantId07 = createExpectedResult();
@@ -543,7 +542,7 @@ public class AskForPayTest extends TestBase {
  * Test Node:  ProductId (Test Exception & boundary value)
  */
         //testcase1
-        Map testData_ProductId01 = AskForUtil.createDefaultInput();
+        Map testData_ProductId01 = AskForPayUtil.createDefaultInput();
         testData_ProductId01.put(AdvPayEnum.ProductId, "");
 
         List expectedResults_ProductId01 = createExpectedResult();
@@ -551,7 +550,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_ProductId01.add("ProductId节点值为空");
 
         //testcase2 ProductId为18位数字且在数据库中存在
-        Map testData_ProductId02 = AskForUtil.createDefaultInput();
+        Map testData_ProductId02 = AskForPayUtil.createDefaultInput();
         testData_ProductId02.put(AdvPayEnum.ProductId, "123456789012345678");
 
         List expectedResults_ProductId02 = createExpectedResult();
@@ -560,7 +559,7 @@ public class AskForPayTest extends TestBase {
 
 
         //testcase3 ProductId为19位数字
-        Map testData_ProductId03 = AskForUtil.createDefaultInput();
+        Map testData_ProductId03 = AskForPayUtil.createDefaultInput();
         testData_ProductId03.put(AdvPayEnum.ProductId, "1234567890123456789");
 
         List expectedResults_ProductId03 = createExpectedResult();
@@ -568,7 +567,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_ProductId03.add("ProductId节点值不能超过18位数值");
 
         //testcase4 ProductId包含字符
-        Map testData_ProductId04 = AskForUtil.createDefaultInput();
+        Map testData_ProductId04 = AskForPayUtil.createDefaultInput();
         testData_ProductId04.put(AdvPayEnum.ProductId, "123abc");
 
         List expectedResults_ProductId04 = createExpectedResult();
@@ -576,7 +575,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_ProductId04.add("ProductId节点值必须为正整数");
 
         //testcase5 ProductId含有中文字符
-        Map testData_ProductId05 = AskForUtil.createDefaultInput();
+        Map testData_ProductId05 = AskForPayUtil.createDefaultInput();
         testData_ProductId05.put(AdvPayEnum.ProductId, "op业务平台订单号");
 
         List expectedResults_ProductId05 = createExpectedResult();
@@ -584,7 +583,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_ProductId05.add("ProductId节点值必须为正整数");
 
         //testcase6 ProductId为18位以下的数字且数据库中存在
-        Map testData_ProductId06 = AskForUtil.createDefaultInput();
+        Map testData_ProductId06 = AskForPayUtil.createDefaultInput();
         testData_ProductId06.put(AdvPayEnum.ProductId, "32");
 
         List expectedResults_ProductId06 = createExpectedResult();
@@ -592,7 +591,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_ProductId06.add("确认支付");
 
         //testcase7 ProductId为18位以下的数字且数据库中不存在
-        Map testData_ProductId07 = AskForUtil.createDefaultInput();
+        Map testData_ProductId07 = AskForPayUtil.createDefaultInput();
         testData_ProductId07.put(AdvPayEnum.ProductId, "7823");
 
         List expectedResults_ProductId07 = createExpectedResult();
@@ -603,7 +602,7 @@ public class AskForPayTest extends TestBase {
  * Test Node:  ProCount (Test Exception & boundary value)
  */
         //testcase1
-        Map testData_ProCount01 = AskForUtil.createDefaultInput();
+        Map testData_ProCount01 = AskForPayUtil.createDefaultInput();
         testData_ProCount01.put(AdvPayEnum.ProCount, "");
 
         List expectedResults_ProCount01 = createExpectedResult();
@@ -611,7 +610,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_ProCount01.add("ProCount节点值为空");
 
         //testcase2 ProCount为10位数字
-        Map testData_ProCount02 = AskForUtil.createDefaultInput();
+        Map testData_ProCount02 = AskForPayUtil.createDefaultInput();
         testData_ProCount02.put(AdvPayEnum.ProCount, "1234567890");
 
         List expectedResults_ProCount02 = createExpectedResult();
@@ -620,7 +619,7 @@ public class AskForPayTest extends TestBase {
 
 
         //testcase3 ProCount为11位数字
-        Map testData_ProCount03 = AskForUtil.createDefaultInput();
+        Map testData_ProCount03 = AskForPayUtil.createDefaultInput();
         testData_ProCount03.put(AdvPayEnum.ProCount, "12345678901");
 
         List expectedResults_ProCount03 = createExpectedResult();
@@ -628,7 +627,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_ProCount03.add("ProCount长度不能超过10位字符");
 
         //testcase4 ProCount包含字符
-        Map testData_ProCount04 = AskForUtil.createDefaultInput();
+        Map testData_ProCount04 = AskForPayUtil.createDefaultInput();
         testData_ProCount04.put(AdvPayEnum.ProCount, "123abc");
 
         List expectedResults_ProCount04 = createExpectedResult();
@@ -636,7 +635,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_ProCount04.add("ProCount节点值必须为大于0的正整数");
 
         //testcase5 ProCount含有中文字符
-        Map testData_ProCount05 = AskForUtil.createDefaultInput();
+        Map testData_ProCount05 = AskForPayUtil.createDefaultInput();
         testData_ProCount05.put(AdvPayEnum.ProCount, "op业务平台订单号");
 
         List expectedResults_ProCount05 = createExpectedResult();
@@ -644,7 +643,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_ProCount05.add("ProCount节点值必须为大于0的正整数");
 
         //testcase6 ProCount数量为负值
-        Map testData_ProCount06 = AskForUtil.createDefaultInput();
+        Map testData_ProCount06 = AskForPayUtil.createDefaultInput();
         testData_ProCount06.put(AdvPayEnum.ProCount, "-1");
 
         List expectedResults_ProCount06 = createExpectedResult();
@@ -656,7 +655,7 @@ public class AskForPayTest extends TestBase {
  * Test Node:  PayAmount (Test Exception & boundary value)
  */
         //testcase1
-        Map testData_PayAmount01 = AskForUtil.createDefaultInput();
+        Map testData_PayAmount01 = AskForPayUtil.createDefaultInput();
         testData_PayAmount01.put(AdvPayEnum.PayAmount, "");
 
         List expectedResults_PayAmount01 = createExpectedResult();
@@ -664,7 +663,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_PayAmount01.add("PayAmount节点值为空");
 
         //testcase2 PayAmount为9位浮点数
-        Map testData_PayAmount02 = AskForUtil.createDefaultInput();
+        Map testData_PayAmount02 = AskForPayUtil.createDefaultInput();
         testData_PayAmount02.put(AdvPayEnum.PayAmount, "999999.99");
 
         List expectedResults_PayAmount02 = createExpectedResult();
@@ -673,7 +672,7 @@ public class AskForPayTest extends TestBase {
 
 
         //testcase3 PayAmount测试小数点后1位
-        Map testData_PayAmount03 = AskForUtil.createDefaultInput();
+        Map testData_PayAmount03 = AskForPayUtil.createDefaultInput();
         testData_PayAmount03.put(AdvPayEnum.PayAmount, "1.1");
 
         List expectedResults_PayAmount03 = createExpectedResult();
@@ -681,7 +680,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_PayAmount03.add("确认支付");
 
         //testcase4 PayAmount测试小数点后3位
-        Map testData_PayAmount04 = AskForUtil.createDefaultInput();
+        Map testData_PayAmount04 = AskForPayUtil.createDefaultInput();
         testData_PayAmount04.put(AdvPayEnum.PayAmount, "1.111");
 
         List expectedResults_PayAmount04 = createExpectedResult();
@@ -689,7 +688,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_PayAmount04.add("PayAmount节点值不是正确的金额，必须为大于0，且小数点前最多6位整数，小数点后最多保留两位的数值");
 
         //testcase5 PayAmount测试小数点后0位
-        Map testData_PayAmount05 = AskForUtil.createDefaultInput();
+        Map testData_PayAmount05 = AskForPayUtil.createDefaultInput();
         testData_PayAmount05.put(AdvPayEnum.PayAmount, "1.");
 
         List expectedResults_PayAmount05 = createExpectedResult();
@@ -697,7 +696,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_PayAmount05.add("PayAmount节点值不是正确的金额，必须为大于0，且小数点前最多6位整数，小数点后最多保留两位的数值");
 
         //testcase6 PayAmount_6位且无小数点
-        Map testData_PayAmount06 = AskForUtil.createDefaultInput();
+        Map testData_PayAmount06 = AskForPayUtil.createDefaultInput();
         testData_PayAmount06.put(AdvPayEnum.PayAmount, "999999");
 
         List expectedResults_PayAmount06 = createExpectedResult();
@@ -705,7 +704,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_PayAmount06.add("确认支付");
 
         //testcase7 PayAmount_7位且无小数点
-        Map testData_PayAmount07 = AskForUtil.createDefaultInput();
+        Map testData_PayAmount07 = AskForPayUtil.createDefaultInput();
         testData_PayAmount07.put(AdvPayEnum.PayAmount, "9999999");
 
         List expectedResults_PayAmount07 = createExpectedResult();
@@ -713,7 +712,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_PayAmount07.add("PayAmount节点值不是正确的金额，必须为大于0，且小数点前最多6位整数，小数点后最多保留两位的数值");
 
         //testcase8 PayAmount含字符
-        Map testData_PayAmount08 = AskForUtil.createDefaultInput();
+        Map testData_PayAmount08 = AskForPayUtil.createDefaultInput();
         testData_PayAmount08.put(AdvPayEnum.PayAmount, "123a");
 
         List expectedResults_PayAmount08 = createExpectedResult();
@@ -721,7 +720,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_PayAmount08.add("PayAmount节点值不是正确的金额，必须为大于0，且小数点前最多6位整数，小数点后最多保留两位的数值");
 
         //testcase9 PayAmount小数点在最前面
-        Map testData_PayAmount09 = AskForUtil.createDefaultInput();
+        Map testData_PayAmount09 = AskForPayUtil.createDefaultInput();
         testData_PayAmount09.put(AdvPayEnum.PayAmount, ".12");
 
         List expectedResults_PayAmount09 = createExpectedResult();
@@ -729,7 +728,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_PayAmount09.add("PayAmount节点值不是正确的金额，必须为大于0，且小数点前最多6位整数，小数点后最多保留两位的数值");
 
         //testcase10 PayAmount是0.00
-        Map testData_PayAmount10 = AskForUtil.createDefaultInput();
+        Map testData_PayAmount10 = AskForPayUtil.createDefaultInput();
         testData_PayAmount10.put(AdvPayEnum.PayAmount, "0.00");
 
         List expectedResults_PayAmount10 = createExpectedResult();
@@ -737,7 +736,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_PayAmount10.add("PayAmount节点值不是正确的金额，必须为大于0，且小数点前最多6位整数，小数点后最多保留两位的数值");
 
         //testcase11 PayAmount是1000000.999
-        Map testData_PayAmount11 = AskForUtil.createDefaultInput();
+        Map testData_PayAmount11 = AskForPayUtil.createDefaultInput();
         testData_PayAmount11.put(AdvPayEnum.PayAmount, "1000000.999");
 
         List expectedResults_PayAmount11 = createExpectedResult();
@@ -750,7 +749,7 @@ public class AskForPayTest extends TestBase {
  */
 
         //testcase1
-        Map testData_PayPeriod01 = AskForUtil.createDefaultInput();
+        Map testData_PayPeriod01 = AskForPayUtil.createDefaultInput();
         testData_PayPeriod01.put(AdvPayEnum.PayPeriod, "");
 
         List expectedResults_PayPeriod01 = createExpectedResult();
@@ -758,7 +757,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_PayPeriod01.add("确认支付");
 
         //testcase2 PayPeriod以分为单位
-        Map testData_PayPeriod02 = AskForUtil.createDefaultInput();
+        Map testData_PayPeriod02 = AskForPayUtil.createDefaultInput();
         testData_PayPeriod02.put(AdvPayEnum.PayPeriod, "5m");
 
         List expectedResults_PayPeriod02 = createExpectedResult();
@@ -767,7 +766,7 @@ public class AskForPayTest extends TestBase {
 
 
         //testcase3 PayPeriod以小时为单位
-        Map testData_PayPeriod03 = AskForUtil.createDefaultInput();
+        Map testData_PayPeriod03 = AskForPayUtil.createDefaultInput();
         testData_PayPeriod03.put(AdvPayEnum.PayPeriod, "9h");
 
         List expectedResults_PayPeriod03 = createExpectedResult();
@@ -775,7 +774,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_PayPeriod03.add("确认支付");
 
         //testcase4 PayPeriod以天为单位
-        Map testData_PayPeriod04 = AskForUtil.createDefaultInput();
+        Map testData_PayPeriod04 = AskForPayUtil.createDefaultInput();
         testData_PayPeriod04.put(AdvPayEnum.PayPeriod, "2d");
 
         List expectedResults_PayPeriod04 = createExpectedResult();
@@ -783,7 +782,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_PayPeriod04.add("PayPeriod参数集错误");
 
         //testcase5 PayPeriod右边界值
-        Map testData_PayPeriod05 = AskForUtil.createDefaultInput();
+        Map testData_PayPeriod05 = AskForPayUtil.createDefaultInput();
         testData_PayPeriod05.put(AdvPayEnum.PayPeriod, "15d");
 
         List expectedResults_PayPeriod05 = createExpectedResult();
@@ -791,7 +790,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_PayPeriod05.add("PayPeriod参数集错误");
 
         //testcase6 PayPeriod左边界值
-        Map testData_PayPeriod06 = AskForUtil.createDefaultInput();
+        Map testData_PayPeriod06 = AskForPayUtil.createDefaultInput();
         testData_PayPeriod06.put(AdvPayEnum.PayPeriod, "1d");
 
         List expectedResults_PayPeriod06 = createExpectedResult();
@@ -799,7 +798,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_PayPeriod06.add("确认支付");
 
         //testcase7 PayPeriod为小时的右边界
-        Map testData_PayPeriod07 = AskForUtil.createDefaultInput();
+        Map testData_PayPeriod07 = AskForPayUtil.createDefaultInput();
         testData_PayPeriod07.put(AdvPayEnum.PayPeriod, "24h");
 
         List expectedResults_PayPeriod07 = createExpectedResult();
@@ -807,7 +806,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_PayPeriod07.add("确认支付");
 
         //testcase8 PayPeriod为小时的左边界
-        Map testData_PayPeriod08 = AskForUtil.createDefaultInput();
+        Map testData_PayPeriod08 = AskForPayUtil.createDefaultInput();
         testData_PayPeriod08.put(AdvPayEnum.PayPeriod, "1h");
 
         List expectedResults_PayPeriod08 = createExpectedResult();
@@ -815,7 +814,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_PayPeriod08.add("确认支付");
 
         //testcase9 PayPeriod为分钟的左边界
-        Map testData_PayPeriod09= AskForUtil.createDefaultInput();
+        Map testData_PayPeriod09= AskForPayUtil.createDefaultInput();
         testData_PayPeriod09.put(AdvPayEnum.PayPeriod, "1m");
 
         List expectedResults_PayPeriod09 = createExpectedResult();
@@ -823,7 +822,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_PayPeriod09.add("确认支付");
 
         //testcase10 PayPeriod为分钟的右边界
-        Map testData_PayPeriod10= AskForUtil.createDefaultInput();
+        Map testData_PayPeriod10= AskForPayUtil.createDefaultInput();
         testData_PayPeriod10.put(AdvPayEnum.PayPeriod, "24h");
 
         List expectedResults_PayPeriod10 = createExpectedResult();
@@ -831,7 +830,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_PayPeriod10.add("确认支付");
 
         //testcase11 PayPeriod左边界分钟异常
-        Map testData_PayPeriod11= AskForUtil.createDefaultInput();
+        Map testData_PayPeriod11= AskForPayUtil.createDefaultInput();
         testData_PayPeriod11.put(AdvPayEnum.PayPeriod, "0m");
 
         List expectedResults_PayPeriod11 = createExpectedResult();
@@ -839,7 +838,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_PayPeriod11.add("PayPeriod参数集错误");
 
         //testcase12 PayPeriod右边界分钟异常
-        Map testData_PayPeriod12= AskForUtil.createDefaultInput();
+        Map testData_PayPeriod12= AskForPayUtil.createDefaultInput();
         testData_PayPeriod12.put(AdvPayEnum.PayPeriod, "25h");
 
         List expectedResults_PayPeriod12 = createExpectedResult();
@@ -847,7 +846,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_PayPeriod12.add("PayPeriod参数集错误");
 
         //testcase13 PayPeriod左边界小时异常
-        Map testData_PayPeriod13= AskForUtil.createDefaultInput();
+        Map testData_PayPeriod13= AskForPayUtil.createDefaultInput();
         testData_PayPeriod13.put(AdvPayEnum.PayPeriod, "0h");
 
         List expectedResults_PayPeriod13 = createExpectedResult();
@@ -855,7 +854,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_PayPeriod13.add("PayPeriod参数集错误");
 
         //testcase14 PayPeriod右边界小时异常
-        Map testData_PayPeriod14= AskForUtil.createDefaultInput();
+        Map testData_PayPeriod14= AskForPayUtil.createDefaultInput();
         testData_PayPeriod14.put(AdvPayEnum.PayPeriod, "301h");
 
         List expectedResults_PayPeriod14 = createExpectedResult();
@@ -864,7 +863,7 @@ public class AskForPayTest extends TestBase {
 
 
         //testcase15 PayPeriod左边界天异常
-        Map testData_PayPeriod15= AskForUtil.createDefaultInput();
+        Map testData_PayPeriod15= AskForPayUtil.createDefaultInput();
         testData_PayPeriod15.put(AdvPayEnum.PayPeriod, "0d");
 
         List expectedResults_PayPeriod15 = createExpectedResult();
@@ -872,7 +871,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_PayPeriod15.add("PayPeriod参数集错误");
 
         //testcase16 PayPeriod左边界天异常
-        Map testData_PayPeriod16= AskForUtil.createDefaultInput();
+        Map testData_PayPeriod16= AskForPayUtil.createDefaultInput();
         testData_PayPeriod16.put(AdvPayEnum.PayPeriod, "16d");
 
         List expectedResults_PayPeriod16 = createExpectedResult();
@@ -880,7 +879,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_PayPeriod16.add("PayPeriod参数集错误");
 
         //testcase17 PayPeriod不符合格式的，全数字
-        Map testData_PayPeriod17= AskForUtil.createDefaultInput();
+        Map testData_PayPeriod17= AskForPayUtil.createDefaultInput();
         testData_PayPeriod17.put(AdvPayEnum.PayPeriod, "1234");
 
         List expectedResults_PayPeriod17 = createExpectedResult();
@@ -888,7 +887,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_PayPeriod17.add("PayPeriod参数集错误");
 
         //testcase18 PayPeriod不符合格式的，超过4位
-        Map testData_PayPeriod18= AskForUtil.createDefaultInput();
+        Map testData_PayPeriod18= AskForPayUtil.createDefaultInput();
         testData_PayPeriod18.put(AdvPayEnum.PayPeriod, "1234m");
 
         List expectedResults_PayPeriod18 = createExpectedResult();
@@ -900,7 +899,7 @@ public class AskForPayTest extends TestBase {
  * Test Node:  PayNotifyIntURL (Test Exception & boundary value)
  */
         //testcase1
-        Map testData_PayNotifyIntURL01 = AskForUtil.createDefaultInput();
+        Map testData_PayNotifyIntURL01 = AskForPayUtil.createDefaultInput();
         testData_PayNotifyIntURL01.put(AdvPayEnum.PayNotifyIntURL, "");
 
         List expectedResults_PayNotifyIntURL01 = createExpectedResult();
@@ -908,7 +907,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_PayNotifyIntURL01.add("确认支付");
 
         //testcase2 PayNotifyIntURL为256位
-        Map testData_PayNotifyIntURL02 = AskForUtil.createDefaultInput();
+        Map testData_PayNotifyIntURL02 = AskForPayUtil.createDefaultInput();
         testData_PayNotifyIntURL02.put(AdvPayEnum.PayNotifyIntURL, "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456");
 
         List expectedResults_PayNotifyIntURL02 = createExpectedResult();
@@ -917,7 +916,7 @@ public class AskForPayTest extends TestBase {
 
 
         //testcase3 PayNotifyIntURL为257位
-        Map testData_PayNotifyIntURL03 = AskForUtil.createDefaultInput();
+        Map testData_PayNotifyIntURL03 = AskForPayUtil.createDefaultInput();
         testData_PayNotifyIntURL03.put(AdvPayEnum.PayNotifyIntURL, "12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567");
 
         List expectedResults_PayNotifyIntURL03 = createExpectedResult();
@@ -925,7 +924,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_PayNotifyIntURL03.add("PayNotifyIntURL节点值长度不能超过256字符");
 
         //testcase4 PayNotifyIntURL为纯数字
-        Map testData_PayNotifyIntURL04 = AskForUtil.createDefaultInput();
+        Map testData_PayNotifyIntURL04 = AskForPayUtil.createDefaultInput();
         testData_PayNotifyIntURL04.put(AdvPayEnum.PayNotifyIntURL, "123");
 
         List expectedResults_PayNotifyIntURL04 = createExpectedResult();
@@ -933,7 +932,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_PayNotifyIntURL04.add("确认支付");
 
         //testcase5 PayNotifyIntURL全为字符
-        Map testData_PayNotifyIntURL05 = AskForUtil.createDefaultInput();
+        Map testData_PayNotifyIntURL05 = AskForPayUtil.createDefaultInput();
         testData_PayNotifyIntURL05.put(AdvPayEnum.PayNotifyIntURL, "thinking");
 
         List expectedResults_PayNotifyIntURL05 = createExpectedResult();
@@ -941,7 +940,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_PayNotifyIntURL05.add("确认支付");
 
         //testcase6 PayNotifyIntURL为256个中文字符
-        Map testData_PayNotifyIntURL06 = AskForUtil.createDefaultInput();
+        Map testData_PayNotifyIntURL06 = AskForPayUtil.createDefaultInput();
         testData_PayNotifyIntURL06.put(AdvPayEnum.PayNotifyIntURL, "测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测");
 
         List expectedResults_PayNotifyIntURL06 = createExpectedResult();
@@ -952,7 +951,7 @@ public class AskForPayTest extends TestBase {
  * Test Node:  PayNotifyPageURL (Test Exception & boundary value)
  */
         //testcase1
-        Map testData_PayNotifyPageURL01 = AskForUtil.createDefaultInput();
+        Map testData_PayNotifyPageURL01 = AskForPayUtil.createDefaultInput();
         testData_PayNotifyPageURL01.put(AdvPayEnum.PayNotifyPageURL, "");
 
         List expectedResults_PayNotifyPageURL01 = createExpectedResult();
@@ -960,7 +959,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_PayNotifyPageURL01.add("确认支付");
 
         //testcase2 PayNotifyPageURL为256位
-        Map testData_PayNotifyPageURL02 = AskForUtil.createDefaultInput();
+        Map testData_PayNotifyPageURL02 = AskForPayUtil.createDefaultInput();
         testData_PayNotifyPageURL02.put(AdvPayEnum.PayNotifyPageURL, "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456");
 
         List expectedResults_PayNotifyPageURL02 = createExpectedResult();
@@ -969,7 +968,7 @@ public class AskForPayTest extends TestBase {
 
 
         //testcase3 PayNotifyPageURL为257位
-        Map testData_PayNotifyPageURL03 = AskForUtil.createDefaultInput();
+        Map testData_PayNotifyPageURL03 = AskForPayUtil.createDefaultInput();
         testData_PayNotifyPageURL03.put(AdvPayEnum.PayNotifyPageURL, "12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567");
 
         List expectedResults_PayNotifyPageURL03 = createExpectedResult();
@@ -977,7 +976,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_PayNotifyPageURL03.add("PayNotifyPageURL节点值长度不能超过256字符");
 
         //testcase4 PayNotifyPageURL为纯数字
-        Map testData_PayNotifyPageURL04 = AskForUtil.createDefaultInput();
+        Map testData_PayNotifyPageURL04 = AskForPayUtil.createDefaultInput();
         testData_PayNotifyPageURL04.put(AdvPayEnum.PayNotifyPageURL, "123");
 
         List expectedResults_PayNotifyPageURL04 = createExpectedResult();
@@ -985,7 +984,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_PayNotifyPageURL04.add("确认支付");
 
         //testcase5 PayNotifyPageURL全为字符
-        Map testData_PayNotifyPageURL05 = AskForUtil.createDefaultInput();
+        Map testData_PayNotifyPageURL05 = AskForPayUtil.createDefaultInput();
         testData_PayNotifyPageURL05.put(AdvPayEnum.PayNotifyPageURL, "thinking");
 
         List expectedResults_PayNotifyPageURL05 = createExpectedResult();
@@ -993,7 +992,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_PayNotifyPageURL05.add("确认支付");
 
         //testcase6 PayNotifyPageURL为256个中文字符
-        Map testData_PayNotifyPageURL06 = AskForUtil.createDefaultInput();
+        Map testData_PayNotifyPageURL06 = AskForPayUtil.createDefaultInput();
         testData_PayNotifyPageURL06.put(AdvPayEnum.PayNotifyPageURL, "测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测");
 
         List expectedResults_PayNotifyPageURL06 = createExpectedResult();
@@ -1006,7 +1005,7 @@ public class AskForPayTest extends TestBase {
 
 
         //testcase1
-        Map testData_RoyaltyFlag01 = AskForUtil.createDefaultInput();
+        Map testData_RoyaltyFlag01 = AskForPayUtil.createDefaultInput();
         testData_RoyaltyFlag01.put(AdvPayEnum.RoyaltyFlag, "");
 
         List expectedResults_RoyaltyFlag01 = createExpectedResult();
@@ -1014,7 +1013,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_RoyaltyFlag01.add("确认支付");
 
         //testcase2 RoyaltyFlag为1
-        Map testData_RoyaltyFlag02 = AskForUtil.createDefaultInput();
+        Map testData_RoyaltyFlag02 = AskForPayUtil.createDefaultInput();
         testData_RoyaltyFlag02.put(AdvPayEnum.RoyaltyFlag, "1");
 
         List expectedResults_RoyaltyFlag02 = createExpectedResult();
@@ -1023,7 +1022,7 @@ public class AskForPayTest extends TestBase {
 
 
         //testcase3 RoyaltyFlag为2
-        Map testData_RoyaltyFlag03 = AskForUtil.createDefaultInput();
+        Map testData_RoyaltyFlag03 = AskForPayUtil.createDefaultInput();
         testData_RoyaltyFlag03.put(AdvPayEnum.RoyaltyFlag, "2");
 
         List expectedResults_RoyaltyFlag03 = createExpectedResult();
@@ -1031,7 +1030,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_RoyaltyFlag03.add("RoyaltyFlag节点值必须为0");
 
         //testcase4 RoyaltyFlag为2位数字
-        Map testData_RoyaltyFlag04 = AskForUtil.createDefaultInput();
+        Map testData_RoyaltyFlag04 = AskForPayUtil.createDefaultInput();
         testData_RoyaltyFlag04.put(AdvPayEnum.RoyaltyFlag, "12");
 
         List expectedResults_RoyaltyFlag04 = createExpectedResult();
@@ -1039,7 +1038,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_RoyaltyFlag04.add("RoyaltyFlag节点值必须为0");
 
         //testcase5 RoyaltyFlag为字母
-        Map testData_RoyaltyFlag05 = AskForUtil.createDefaultInput();
+        Map testData_RoyaltyFlag05 = AskForPayUtil.createDefaultInput();
         testData_RoyaltyFlag05.put(AdvPayEnum.RoyaltyFlag, "a");
 
         List expectedResults_RoyaltyFlag05 = createExpectedResult();
@@ -1051,7 +1050,7 @@ public class AskForPayTest extends TestBase {
  * Test Node:  MerchantUrl (Test Exception & boundary value)
  */
         //testcase1
-        Map testData_MerchantUrl01 = AskForUtil.createDefaultInput();
+        Map testData_MerchantUrl01 = AskForPayUtil.createDefaultInput();
         testData_MerchantUrl01.put(AdvPayEnum.MerchantUrl, "");
 
         List expectedResults_MerchantUrl01 = createExpectedResult();
@@ -1059,7 +1058,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_MerchantUrl01.add("确认支付");
 
         //testcase2 MerchantUrl为256位
-        Map testData_MerchantUrl02 = AskForUtil.createDefaultInput();
+        Map testData_MerchantUrl02 = AskForPayUtil.createDefaultInput();
         testData_MerchantUrl02.put(AdvPayEnum.MerchantUrl, "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456");
 
         List expectedResults_MerchantUrl02 = createExpectedResult();
@@ -1068,7 +1067,7 @@ public class AskForPayTest extends TestBase {
 
 
         //testcase3 MerchantUrl为257位
-        Map testData_MerchantUrl03 = AskForUtil.createDefaultInput();
+        Map testData_MerchantUrl03 = AskForPayUtil.createDefaultInput();
         testData_MerchantUrl03.put(AdvPayEnum.MerchantUrl, "12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234561");
 
         List expectedResults_MerchantUrl03 = createExpectedResult();
@@ -1076,7 +1075,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_MerchantUrl03.add("MerchantURL节点值长度不能超过256字符");
 
         //testcase4 MerchantUrl为纯数字
-        Map testData_MerchantUrl04 = AskForUtil.createDefaultInput();
+        Map testData_MerchantUrl04 = AskForPayUtil.createDefaultInput();
         testData_MerchantUrl04.put(AdvPayEnum.MerchantUrl, "123");
 
         List expectedResults_MerchantUrl04 = createExpectedResult();
@@ -1084,7 +1083,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_MerchantUrl04.add("确认支付");
 
         //testcase5 MerchantUrl全为字符
-        Map testData_MerchantUrl05 = AskForUtil.createDefaultInput();
+        Map testData_MerchantUrl05 = AskForPayUtil.createDefaultInput();
         testData_MerchantUrl05.put(AdvPayEnum.MerchantUrl, "thinking");
 
         List expectedResults_MerchantUrl05 = createExpectedResult();
@@ -1092,7 +1091,7 @@ public class AskForPayTest extends TestBase {
         expectedResults_MerchantUrl05.add("确认支付");
 
         //testcase6 MerchantUrl为256个中文字符
-        Map testData_MerchantUrl06 = AskForUtil.createDefaultInput();
+        Map testData_MerchantUrl06 = AskForPayUtil.createDefaultInput();
         testData_MerchantUrl06.put(AdvPayEnum.MerchantUrl, "测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测试中国人测");
 
         List expectedResults_MerchantUrl06 = createExpectedResult();
@@ -1254,7 +1253,7 @@ public class AskForPayTest extends TestBase {
 
     @Test(dataProvider = "testData_AskForPay", groups = "AskForPay")
     public void askForPayTest(Map input, List<String> expectedResults, String desc) {
-        AdvTestResponse response = test(input, InterfaceType.askfor);
+        AdvTestResponse response = test(input, InterfaceType.askForPay);
 
         Assert.assertEquals(response.getStatusCode(), 200);
         Assert.assertEquals(response.getReasonPhrase(), "OK");

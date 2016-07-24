@@ -1,12 +1,14 @@
 package com.cmcc.pay.paystand.test.xml.module;
 
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementRef;
+import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Created by ech0 on 2016/3/13.
  */
-@XmlRootElement(name = "AdvPay")
+//@XmlRootElement(name = "AdvPay")
 public class AdvPay {
 
     private PubInfo pubInfo;
@@ -17,7 +19,8 @@ public class AdvPay {
         return pubInfo;
     }
 
-    @XmlElement(name = "PubInfo")
+
+//    @XmlElement(name = "PubInfo")
     public void setPubInfo(PubInfo pubInfo) {
         this.pubInfo = pubInfo;
     }
@@ -26,7 +29,7 @@ public class AdvPay {
         return busiData;
     }
 
-    @XmlElement(name = "BusiData")
+//    @XmlElement(name = "BusiData")
     public void setBusiData(BusiData busiData) {
         this.busiData = busiData;
     }

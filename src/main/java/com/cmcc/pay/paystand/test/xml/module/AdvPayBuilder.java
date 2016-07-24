@@ -2,6 +2,12 @@ package com.cmcc.pay.paystand.test.xml.module;
 
 import com.cmcc.pay.paystand.test.util.InterfaceType;
 import com.cmcc.pay.paystand.test.util.MD5Generator;
+import com.cmcc.pay.paystand.test.xml.module.askforpay.AdvPayForAskForPay;
+import com.cmcc.pay.paystand.test.xml.module.askforpay.AskForPayBusiData;
+import com.cmcc.pay.paystand.test.xml.module.refund.AdvPayForRefund;
+import com.cmcc.pay.paystand.test.xml.module.refund.RefundBusiData;
+import com.cmcc.pay.paystand.test.xml.module.settleperiodchange.AdvPayForSettlePeriodChange;
+import com.cmcc.pay.paystand.test.xml.module.settleperiodchange.SettlePeriodChangeBusiData;
 
 import java.util.Map;
 
@@ -10,36 +16,42 @@ import java.util.Map;
  */
 public class AdvPayBuilder {
 
-    public static AdvPay build(Map<String,String> input, InterfaceType interfaceType){
+    public static AdvPay build(Map<String, String> input, InterfaceType interfaceType) {
 
-        AdvPay advPay = new AdvPay();
+
         PubInfo pubInfo = new PubInfo();
         pubInfo.setVersion(input.get(AdvPayEnum.Version));
         pubInfo.setTransactionId(input.get(AdvPayEnum.TransactionId));
         pubInfo.setTransactionDate(input.get(AdvPayEnum.TransactionDate));
         pubInfo.setOriginId(input.get(AdvPayEnum.OriginId));
         pubInfo.setDigestAlg(input.get(AdvPayEnum.DigestAlg));
-
-//        String originalVerifyCode = input.get(AdvPayEnum.VerifyCode);
-        String finalVerifyCode = MD5Generator.sign(input,MD5Generator.MD5_KEY);
+        String finalVerifyCode = MD5Generator.sign(input, MD5Generator.MD5_KEY);
         pubInfo.setVerifyCode(finalVerifyCode);
 
-        BusiData busiData = null;
-        if (InterfaceType.askfor.equals(interfaceType)){
-            busiData = AskForBusiData.build(input);
-        }else if (InterfaceType.refund.equals(interfaceType)){
-            busiData = RefundBusiData.build(input);
-        }else if (InterfaceType.settlePeriodChange.equals(interfaceType)){
-            busiData = SettlePeriodChangeBusiData.build(input);
-        }
-
-        advPay.setPubInfo(pubInfo);
-        advPay.setBusiData(busiData);
-
-
+        AdvPay advPay = null;
+//        if (InterfaceType.askForPay.equals(interfaceType)) {
+//            advPay = new AdvPayForAskForPay();
+//            AskForPayBusiData busiData = AskForPayBusiData.build(input);
+//            advPay.setPubInfo(pubInfo);
+//            advPay.setBusiData(busiData);
+//            return advPay;
+//        } else if (InterfaceType.refund.equals(interfaceType)) {
+//            advPay = new AdvPayForRefund();
+//            RefundBusiData busiData = RefundBusiData.build(input);
+//            advPay.setPubInfo(pubInfo);
+//            advPay.setBusiData(busiData);
+//            return advPay;
+//        } else if (InterfaceType.settlePeriodChange.equals(interfaceType)) {
+//            advPay = new AdvPayForSettlePeriodChange();
+//            SettlePeriodChangeBusiData busiData = SettlePeriodChangeBusiData.build(input);
+//            advPay.setPubInfo(pubInfo);
+//            advPay.setBusiData(busiData);
+//
+//        }
         return advPay;
-    }
 
+
+    }
 
 
 }

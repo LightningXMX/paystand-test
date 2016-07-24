@@ -20,7 +20,7 @@ public class SettlePeriodChangeUtil {
         defaultInput.put(AdvPayEnum.VerifyCode,"245085b06819d930639a15f12fd4ba98");
 
 
-        defaultInput.put(AdvPayEnum.OrderId,"DefaultOrderId");
+        defaultInput.put(AdvPayEnum.OrderId,"OP2016070311321757103");
         defaultInput.put(AdvPayEnum.SettlePeriod,"DefaultSettlePeriod");
 
         return defaultInput;

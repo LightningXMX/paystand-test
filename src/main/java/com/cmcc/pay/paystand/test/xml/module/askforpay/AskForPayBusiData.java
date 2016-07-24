@@ -1,4 +1,7 @@
-package com.cmcc.pay.paystand.test.xml.module;
+package com.cmcc.pay.paystand.test.xml.module.askforpay;
+
+import com.cmcc.pay.paystand.test.xml.module.AdvPayEnum;
+import com.cmcc.pay.paystand.test.xml.module.BusiData;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -8,7 +11,7 @@ import java.util.Map;
  * Created by LIGHTNING on 2016/7/24.
  */
 @XmlRootElement(name = "BusiData")
-public class AskForBusiData extends BusiData {
+public class AskForPayBusiData {
     private String accountType;
     private String accountCode;
     private String payInfo;
@@ -131,9 +134,9 @@ public class AskForBusiData extends BusiData {
 
 
 
-    public static BusiData build(Map<String,String> input){
+    public static AskForPayBusiData build(Map<String,String> input){
 
-        AskForBusiData busiData = new AskForBusiData();
+        AskForPayBusiData busiData = new AskForPayBusiData();
         busiData.setAccountType(input.get(AdvPayEnum.AccountType));
         busiData.setAccountCode(input.get(AdvPayEnum.AccountCode));
         busiData.setPayInfo(input.get(AdvPayEnum.PayInfo));

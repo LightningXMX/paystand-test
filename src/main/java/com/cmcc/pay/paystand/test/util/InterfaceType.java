@@ -5,7 +5,7 @@ package com.cmcc.pay.paystand.test.util;
  */
 public enum  InterfaceType {
 
-    askfor,
+    askForPay,
     refund,
     settlePeriodChange
 

@@ -3,7 +3,6 @@ package com.cmcc.pay.paystand.test.testcase;
 import com.cmcc.pay.paystand.test.util.AdvTestResponse;
 import com.cmcc.pay.paystand.test.util.InterfaceType;
 import com.cmcc.pay.paystand.test.util.TestBase;
-import com.cmcc.pay.paystand.test.util.biz.AskForUtil;
 import com.cmcc.pay.paystand.test.util.biz.RefundUtil;
 import com.cmcc.pay.paystand.test.xml.module.AdvPayEnum;
 import org.testng.Assert;
@@ -35,7 +34,7 @@ public class RefundTest extends TestBase{
     }
 
     @Test(dataProvider = "testData_Refund", groups = "Refund")
-    public void askForPayTest(Map input, List<String> expectedResults, String desc) {
+    public void refundTest(Map input, List<String> expectedResults, String desc) {
         AdvTestResponse response = test(input, InterfaceType.refund);
 
         Assert.assertEquals(response.getStatusCode(), 200);
