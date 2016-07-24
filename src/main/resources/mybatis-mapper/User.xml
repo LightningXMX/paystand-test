@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinamobile.hihealth.mybatis.interfaces.UserMapper">
+	<resultMap type="User" id="resultUser">
+		<id property="id" column="id" />
+		<result property="nickName" column="nick_name" />
+		<result property="mobile" column="mobile" />
+		<result property="lastLoginTime" column="last_login_time" />
+	</resultMap>
+	<select id="selectByMobile" parameterType="String" resultType="User"
+		resultMap="resultUser">
+		select * from `t_user` where mobile = #{mobile}
+	</select>
+	<select id="selectHabitMoodByInterest" parameterType="String"
+		resultType="int">
+		SELECT count(*)
+		from t_user login_user
+		LEFT JOIN t_user_habit
+		login_user_habit
+		on login_user.id=login_user_habit.user_id
+		INNER JOIN
+		t_user_habit_weibo
+		weibo on weibo.habit_id = login_user_habit.habit_id
+		LEFT JOIN
+		t_user_habit_weibo_praise praise on praise.weibo_id=weibo.id
+		and
+		praise.user_id = #{userid}
+		where login_user.id = #{userid} and
+		weibo.user_id!=#{userid} and weibo.status =TRUE
+	</select>
+	<select id="selectModelMoodByInterest" parameterType="String"
+		resultType="int">
+		SELECT count(*)
+		from t_user login_user
+		LEFT JOIN t_user_model
+		login_user_habit
+		on login_user.id=login_user_habit.user_id
+		INNER JOIN
+		t_user_model_weibo
+		weibo on weibo.model_id = login_user_habit.model_id
+		LEFT JOIN
+		t_user_model_weibo_praise praise on praise.weibo_id=weibo.id
+		and
+		praise.user_id = #{userid}
+		where login_user.id = #{userid} and
+		weibo.user_id!=#{userid} and weibo.status =TRUE
+	</select>
+	<select id="selectHabitMoodByFriend" parameterType="String"
+		resultType="int">
+		SELECT count(*)
+		from t_user login_user
+		LEFT JOIN t_user_follow
+		user_follow on login_user.id=user_follow.follower_id
+		INNER JOIN
+		t_user_habit_weibo weibo on weibo.user_id = user_follow.user_id
+		LEFT
+		JOIN t_user_habit_weibo_praise praise on praise.weibo_id=weibo.id
+		and
+		praise.user_id = #{userid}
+		where user_follow.status = 1 and
+		login_user.id = #{userid} and
+		weibo.status=TRUE
+	</select>
+	<select id="selectModelMoodByFriend" parameterType="String"
+		resultType="int">
+		SELECT count(*)
+		from t_user login_user
+		LEFT JOIN t_user_follow
+		user_follow on
+		login_user.id=user_follow.follower_id
+		INNER JOIN
+		t_user_model_weibo weibo on weibo.user_id = user_follow.user_id
+		LEFT
+		JOIN t_user_model_weibo_praise praise on praise.weibo_id=weibo.id
+		and
+		praise.user_id = #{userid}
+		where user_follow.status = 1 and
+		login_user.id = #{userid} and
+		weibo.status=TRUE
+	</select>
+</mapper>
