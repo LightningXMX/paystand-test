@@ -8,7 +8,9 @@ import java.net.URLEncoder;
  */
 public class URLbuilder {
 
-    public static String HOST = "";
+    public static String ASK_FOR_HOST = "";
+    public static String REFUND_HOST = "";
+    public static String SETTLE_PERIOD_CHANGE_HOST = "";
     public static String PORT = "";
     public static String ASK_FOR_PATH = "";
     public static String REFUND_PATH = "";
@@ -23,11 +25,11 @@ public class URLbuilder {
             String encodedXML = URLEncoder.encode(xml, "UTF-8");
 
             if (InterfaceType.askForPay.equals(interfaceType)){
-            url = "http://" + HOST + ":" + PORT + ASK_FOR_PATH + encodedXML;
+            url = "http://" + ASK_FOR_HOST + ":" + PORT + ASK_FOR_PATH + encodedXML;
             }else if (InterfaceType.refund.equals(interfaceType)){
-                url = "http://" + HOST + ":" + PORT + REFUND_PATH + encodedXML;
+                url = "http://" + REFUND_HOST + ":" + PORT + REFUND_PATH + encodedXML;
             }else if (InterfaceType.settlePeriodChange.equals(interfaceType)){
-                url = "http://" + HOST + ":" + PORT + SETTLE_PERIOD_CHANGE_PATH + encodedXML;
+                url = "http://" + SETTLE_PERIOD_CHANGE_HOST + ":" + PORT + SETTLE_PERIOD_CHANGE_PATH + encodedXML;
             }
 
             System.out.println(url);

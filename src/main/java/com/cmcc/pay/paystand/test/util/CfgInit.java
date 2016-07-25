@@ -31,7 +31,10 @@ public class CfgInit {
         }
 
         MD5Generator.MD5_KEY = (String) properties.get("MD5_KEY");
-        URLbuilder.HOST = (String) properties.get("HOST");
+        URLbuilder.ASK_FOR_HOST = (String) properties.get("ASK_FOR_HOST");
+        URLbuilder.REFUND_HOST = (String) properties.get("REFUND_HOST");
+        URLbuilder.SETTLE_PERIOD_CHANGE_HOST = (String) properties.get("SETTLE_PERIOD_CHANGE_HOST");
+
         URLbuilder.PORT = (String) properties.get("PORT");
 
         URLbuilder.ASK_FOR_PATH = (String) properties.get("ASK_FOR_PATH");
