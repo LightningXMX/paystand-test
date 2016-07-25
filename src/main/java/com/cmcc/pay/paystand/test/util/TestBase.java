@@ -2,10 +2,6 @@ package com.cmcc.pay.paystand.test.util;
 
 import com.cmcc.pay.paystand.test.xml.module.AdvPay;
 import com.cmcc.pay.paystand.test.xml.module.AdvPayBuilder;
-import com.cmcc.pay.paystand.test.xml.module.AdvPayEnum;
-import com.cmcc.pay.paystand.test.xml.module.askforpay.AdvPayForAskForPay;
-import com.cmcc.pay.paystand.test.xml.module.refund.AdvPayForRefund;
-import com.cmcc.pay.paystand.test.xml.module.settleperiodchange.AdvPayForSettlePeriodChange;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -63,22 +59,9 @@ public class TestBase {
     }
     protected AdvTestResponse test(Map<String,String> input,InterfaceType interfaceType) {
 
-        String xml = "";
-        if (InterfaceType.askForPay.equals(interfaceType)){
-            AdvPayForAskForPay advPay = AdvPayForAskForPay.build(input);
-             xml = XmlUtil.convertToXml(advPay);
-        } else if (InterfaceType.refund.equals(interfaceType)){
-            AdvPayForRefund advPayForRefund =  AdvPayForRefund.build(input);
-             xml = XmlUtil.convertToXml(advPayForRefund);
+        AdvPay advPay = AdvPayBuilder.build(input,interfaceType);
 
-        } else if (InterfaceType.settlePeriodChange.equals(interfaceType)){
-            AdvPayForSettlePeriodChange advPayForSettlePeriodChange = AdvPayForSettlePeriodChange.build(input);
-             xml = XmlUtil.convertToXml(advPayForSettlePeriodChange);
-
-        }
-//        AdvPay advPay = AdvPayBuilder.build(input,interfaceType);
-//
-//        String xml = XmlUtil.convertToXml(advPay);
+        String xml = XmlUtil.convertToXml(advPay);
 
         String url = URLbuilder.buildRequestUrl(xml,interfaceType);
 
