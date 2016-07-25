@@ -2,11 +2,8 @@ package com.cmcc.pay.paystand.test.xml.module;
 
 import com.cmcc.pay.paystand.test.util.InterfaceType;
 import com.cmcc.pay.paystand.test.util.MD5Generator;
-import com.cmcc.pay.paystand.test.xml.module.askforpay.AdvPayForAskForPay;
 import com.cmcc.pay.paystand.test.xml.module.askforpay.AskForPayBusiData;
-import com.cmcc.pay.paystand.test.xml.module.refund.AdvPayForRefund;
 import com.cmcc.pay.paystand.test.xml.module.refund.RefundBusiData;
-import com.cmcc.pay.paystand.test.xml.module.settleperiodchange.AdvPayForSettlePeriodChange;
 import com.cmcc.pay.paystand.test.xml.module.settleperiodchange.SettlePeriodChangeBusiData;
 
 import java.util.Map;
@@ -31,11 +28,11 @@ public class AdvPayBuilder {
         AdvPay advPay = new AdvPay();
         BusiData busiData = null;
         if (InterfaceType.askForPay.equals(interfaceType)) {
-             busiData = AskForPayBusiData.build(input);
+            busiData = AskForPayBusiData.build(input);
         } else if (InterfaceType.refund.equals(interfaceType)) {
-             busiData = RefundBusiData.build(input);
+            busiData = RefundBusiData.build(input);
         } else if (InterfaceType.settlePeriodChange.equals(interfaceType)) {
-             busiData = SettlePeriodChangeBusiData.build(input);
+            busiData = SettlePeriodChangeBusiData.build(input);
         }
         advPay.setPubInfo(pubInfo);
         advPay.setBusiData(busiData);

@@ -1,5 +1,6 @@
 package com.cmcc.pay.paystand.test.util;
 
+import com.cmcc.pay.paystand.test.util.biz.ExcelInfo;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -46,6 +47,16 @@ public class CfgInit {
         DBHelper.name = (String) properties.get("JDBC_NAME");
         DBHelper.user = (String) properties.get("JDBC_USER");
         DBHelper.password = (String) properties.get("JDBC_PASSWORD");
+
+
+        ExcelInfo.ExcelFileName_AskForPay = "";
+        ExcelInfo.ExcelFileName_Refund = "refund-testdata.xlsx";
+        ExcelInfo.ExcelFileName_SettlePeriodChange = "";
+
+
+        ExcelInfo.ExcelRefundSheetName = "refund";
+        ExcelInfo.ExcelAskForPaySheetName = "askforpay";
+        ExcelInfo.ExcelChangeSettlePeriodSheetName = "changesettleperiod";
 
     }
 }

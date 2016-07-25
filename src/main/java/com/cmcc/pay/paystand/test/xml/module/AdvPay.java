@@ -30,4 +30,5 @@ public class AdvPay {
     public void setBusiData(BusiData busiData) {
         this.busiData = busiData;
     }
+
 }

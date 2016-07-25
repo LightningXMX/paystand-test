@@ -4,7 +4,9 @@ import com.cmcc.pay.paystand.test.util.AdvTestResponse;
 import com.cmcc.pay.paystand.test.util.InterfaceType;
 import com.cmcc.pay.paystand.test.util.TestBase;
 import com.cmcc.pay.paystand.test.util.biz.RefundUtil;
+import com.cmcc.pay.paystand.test.xml.module.AdvPay;
 import com.cmcc.pay.paystand.test.xml.module.AdvPayEnum;
+import com.cmcc.pay.paystand.test.xml.module.refund.RefundTestData;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -15,27 +17,32 @@ import java.util.Map;
 /**
  * Created by LIGHTNING on 2016/7/24.
  */
-public class RefundTest extends TestBase{
+public class RefundTest extends TestBase {
 
     @DataProvider(name = "testData_Refund")
     public Object[][] testData_Refund() {
-//testcase1
-        Map testData_Version01 = RefundUtil.createDefaultInput();
-        testData_Version01.put(AdvPayEnum.Version, "");
 
-        List expectedResults_Version01 = createExpectedResult();
-        expectedResults_Version01.add("9007");
-        expectedResults_Version01.add("Version节点值为空");
+        List<RefundTestData> refundTestDataList = getTestData(InterfaceType.refund);
 
-        return new Object[][]{
+        Object[][] allTestData = new Object[refundTestDataList.size()][3];
 
-                {testData_Version01, expectedResults_Version01, "yyy测试正常的测试数据"}
-        };
+        for (int i = 0; i < refundTestDataList.size(); i++) {
+            AdvPay advPay = refundTestDataList.get(i).getAdvPay();
+            List<String> expectedResults = refundTestDataList.get(i).getExpectedResults();
+            String desc = refundTestDataList.get(i).getDesc();
+
+            Object[] testData = {advPay, expectedResults, desc};
+            allTestData[i] = testData;
+        }
+
+        return allTestData;
+
     }
 
     @Test(dataProvider = "testData_Refund", groups = "Refund")
-    public void refundTest(Map input, List<String> expectedResults, String desc) {
-        AdvTestResponse response = test(input, InterfaceType.refund);
+    public void refundTest(AdvPay advPay, List<String> expectedResults, String desc) {
+        AdvTestResponse response = test(advPay, InterfaceType.refund);
+//        AdvTestResponse response = test(input, InterfaceType.refund);
 
         Assert.assertEquals(response.getStatusCode(), 200);
         Assert.assertEquals(response.getReasonPhrase(), "OK");
