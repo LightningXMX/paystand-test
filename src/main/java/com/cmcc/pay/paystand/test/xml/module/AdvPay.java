@@ -17,8 +17,6 @@ public class AdvPay {
         return pubInfo;
     }
 
-
-
     @XmlElement(name = "PubInfo")
     public void setPubInfo(PubInfo pubInfo) {
         this.pubInfo = pubInfo;
