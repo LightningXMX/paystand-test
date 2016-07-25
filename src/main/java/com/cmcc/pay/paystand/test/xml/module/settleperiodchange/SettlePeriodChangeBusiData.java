@@ -11,7 +11,7 @@ import java.util.Map;
  * Created by LIGHTNING on 2016/7/24.
  */
 @XmlRootElement(name = "BusiData")
-public class SettlePeriodChangeBusiData {
+public class SettlePeriodChangeBusiData extends BusiData{
 
     private String orderId;
     private String settlePeriod;

@@ -11,7 +11,7 @@ import java.util.Map;
  * Created by LIGHTNING on 2016/7/24.
  */
 @XmlRootElement(name = "BusiData")
-public class AskForPayBusiData {
+public class AskForPayBusiData extends BusiData{
     private String accountType;
     private String accountCode;
     private String payInfo;
@@ -134,7 +134,7 @@ public class AskForPayBusiData {
 
 
 
-    public static AskForPayBusiData build(Map<String,String> input){
+    public static BusiData build(Map<String,String> input){
 
         AskForPayBusiData busiData = new AskForPayBusiData();
         busiData.setAccountType(input.get(AdvPayEnum.AccountType));

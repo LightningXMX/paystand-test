@@ -63,22 +63,22 @@ public class TestBase {
     }
     protected AdvTestResponse test(Map<String,String> input,InterfaceType interfaceType) {
 
-        String xml = "";
-        if (InterfaceType.askForPay.equals(interfaceType)){
-            AdvPayForAskForPay advPay = AdvPayForAskForPay.build(input);
-             xml = XmlUtil.convertToXml(advPay);
-        } else if (InterfaceType.refund.equals(interfaceType)){
-            AdvPayForRefund advPayForRefund =  AdvPayForRefund.build(input);
-             xml = XmlUtil.convertToXml(advPayForRefund);
-
-        } else if (InterfaceType.settlePeriodChange.equals(interfaceType)){
-            AdvPayForSettlePeriodChange advPayForSettlePeriodChange = AdvPayForSettlePeriodChange.build(input);
-             xml = XmlUtil.convertToXml(advPayForSettlePeriodChange);
-
-        }
-//        AdvPay advPay = AdvPayBuilder.build(input,interfaceType);
+//        String xml = "";
+//        if (InterfaceType.askForPay.equals(interfaceType)){
+//            AdvPayForAskForPay advPay = AdvPayForAskForPay.build(input);
+//             xml = XmlUtil.convertToXml(advPay);
+//        } else if (InterfaceType.refund.equals(interfaceType)){
+//            AdvPayForRefund advPayForRefund =  AdvPayForRefund.build(input);
+//             xml = XmlUtil.convertToXml(advPayForRefund);
 //
-//        String xml = XmlUtil.convertToXml(advPay);
+//        } else if (InterfaceType.settlePeriodChange.equals(interfaceType)){
+//            AdvPayForSettlePeriodChange advPayForSettlePeriodChange = AdvPayForSettlePeriodChange.build(input);
+//             xml = XmlUtil.convertToXml(advPayForSettlePeriodChange);
+//
+//        }
+        AdvPay advPay = AdvPayBuilder.build(input,interfaceType);
+//
+        String xml = XmlUtil.convertToXml(advPay);
 
         String url = URLbuilder.buildRequestUrl(xml,interfaceType);
 

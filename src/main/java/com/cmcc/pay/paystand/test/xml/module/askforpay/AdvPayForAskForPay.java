@@ -54,11 +54,11 @@ public class AdvPayForAskForPay {
         String finalVerifyCode = MD5Generator.sign(input, MD5Generator.MD5_KEY);
         pubInfo.setVerifyCode(finalVerifyCode);
 
-        AskForPayBusiData busiData = AskForPayBusiData.build(input);
+//        AskForPayBusiData busiData = AskForPayBusiData.build(input);
 
         AdvPayForAskForPay advPayForAskForPay = new AdvPayForAskForPay();
         advPayForAskForPay.setPubInfo(pubInfo);
-        advPayForAskForPay.setBusiData(busiData);
+//        advPayForAskForPay.setBusiData(busiData);
         return advPayForAskForPay;
 
     }

@@ -28,26 +28,17 @@ public class AdvPayBuilder {
         String finalVerifyCode = MD5Generator.sign(input, MD5Generator.MD5_KEY);
         pubInfo.setVerifyCode(finalVerifyCode);
 
-        AdvPay advPay = null;
-//        if (InterfaceType.askForPay.equals(interfaceType)) {
-//            advPay = new AdvPayForAskForPay();
-//            AskForPayBusiData busiData = AskForPayBusiData.build(input);
-//            advPay.setPubInfo(pubInfo);
-//            advPay.setBusiData(busiData);
-//            return advPay;
-//        } else if (InterfaceType.refund.equals(interfaceType)) {
-//            advPay = new AdvPayForRefund();
-//            RefundBusiData busiData = RefundBusiData.build(input);
-//            advPay.setPubInfo(pubInfo);
-//            advPay.setBusiData(busiData);
-//            return advPay;
-//        } else if (InterfaceType.settlePeriodChange.equals(interfaceType)) {
-//            advPay = new AdvPayForSettlePeriodChange();
-//            SettlePeriodChangeBusiData busiData = SettlePeriodChangeBusiData.build(input);
-//            advPay.setPubInfo(pubInfo);
-//            advPay.setBusiData(busiData);
-//
-//        }
+        AdvPay advPay = new AdvPay();
+        BusiData busiData = null;
+        if (InterfaceType.askForPay.equals(interfaceType)) {
+             busiData = AskForPayBusiData.build(input);
+        } else if (InterfaceType.refund.equals(interfaceType)) {
+             busiData = RefundBusiData.build(input);
+        } else if (InterfaceType.settlePeriodChange.equals(interfaceType)) {
+             busiData = SettlePeriodChangeBusiData.build(input);
+        }
+        advPay.setPubInfo(pubInfo);
+        advPay.setBusiData(busiData);
         return advPay;
 
 

@@ -12,7 +12,7 @@ import java.util.Map;
  */
 //@XmlRootElement(name = "BusiData")
 @XmlRootElement(name = "BusiData")
-public class RefundBusiData{
+public class RefundBusiData extends BusiData{
 
 
     private String orderId;
