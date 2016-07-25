@@ -80,7 +80,7 @@ public class TestBase {
 //
 //        String xml = XmlUtil.convertToXml(advPay);
 
-        String url = URLbuilder.buildRequestUrl(xml);
+        String url = URLbuilder.buildRequestUrl(xml,interfaceType);
 
         AdvTestResponse response = HttpClientUtil.get(url);
 
